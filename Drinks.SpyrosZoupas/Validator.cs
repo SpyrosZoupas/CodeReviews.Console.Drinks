@@ -1,4 +1,5 @@
-﻿namespace Drinks.SpyrosZoupas
+﻿
+namespace Drinks.SpyrosZoupas
 {
     public class Validator
     {
@@ -7,13 +8,15 @@
             if (string.IsNullOrEmpty(stringInput))
                 return false;
 
-            foreach (char c in stringInput)
-            {
-                if (!char.IsLetter(c) && c != '/' && c != ' ')
-                    return false;
-            }
+            return stringInput.All(c => char.IsLetter(c) && c != '/' && c != ' ');
+        }
 
-            return true;
+        internal static bool IsIdValid(string stringInput)
+        {
+            if (string.IsNullOrEmpty(stringInput))
+                return false;
+
+            return stringInput.All(char.IsDigit);
         }
     }
 }

@@ -30,6 +30,19 @@ namespace Drinks.SpyrosZoupas
         private void GetDrinksInput(string category)
         {
             _drinksService.GetDrinksByCategory(category);
+
+            Console.WriteLine("Choose a drink or go back to category menu by pressing 0:");
+
+            string drink = Console.ReadLine();
+
+            if (drink == "0")
+                GetCategoriesInput();
+
+            while (!Validator.IsIdValid(drink))
+            {
+                Console.WriteLine("\nInvalid drink!");
+                drink = Console.ReadLine();
+            }
         }
     }
 }
