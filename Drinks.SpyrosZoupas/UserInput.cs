@@ -1,5 +1,4 @@
-﻿
-namespace Drinks.SpyrosZoupas
+﻿namespace Drinks.SpyrosZoupas
 {
     public class UserInput
     {
@@ -43,6 +42,8 @@ namespace Drinks.SpyrosZoupas
                 Console.WriteLine("\nInvalid drink!");
                 drink = Console.ReadLine();
             }
+
+            _drinksService.GetDrink(drink);
         }
     }
 }

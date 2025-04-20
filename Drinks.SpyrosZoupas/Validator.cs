@@ -1,5 +1,4 @@
-﻿
-namespace Drinks.SpyrosZoupas
+﻿namespace Drinks.SpyrosZoupas
 {
     public class Validator
     {
