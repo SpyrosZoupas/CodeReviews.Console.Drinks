@@ -10,26 +10,31 @@ namespace Drinks.SpyrosZoupas
     {
         RestClient client = new RestClient("http://www.thecocktaildb.com/api/json/v1/1/");
         
-        public void GetCategories()
+        public List<Category> GetCategories()
         {
             var request = new RestRequest("list.php?c=list");
             var response = client.ExecuteAsync(request);
+
+            List<Category> categories = new List<Category>();
 
             if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 string rawResponse = response.Result.Content;
                 var serialise = JsonConvert.DeserializeObject<Categories>(rawResponse);
 
-                List<Category> returnedList = serialise.CategoriesList;
-
-                TableVisualisationEngine.ShowTable(returnedList, "Categories Menu");
+                categories = serialise.CategoriesList;
+                TableVisualisationEngine.ShowTable(categories, "Categories Menu");
             }
+
+            return categories;
         }
 
-        public void GetDrinksByCategory(string category)
+        public List<Drink> GetDrinksByCategory(string category)
         {
             var request = new RestRequest($"filter.php?c={HttpUtility.UrlEncode(category)}");
             var response = client.ExecuteAsync(request);
+
+            List<Drink> drinks = new List<Drink>();
 
             if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -37,10 +42,12 @@ namespace Drinks.SpyrosZoupas
 
                 var serialise = JsonConvert.DeserializeObject<Model.Drinks>(rawResponse);
 
-                List<Drink> returnedList = serialise.DrinksList;
+                drinks = serialise.DrinksList;
 
-                TableVisualisationEngine.ShowTable(returnedList, "Drinks Menu");
+                TableVisualisationEngine.ShowTable(drinks, "Drinks Menu");
             }
+
+            return drinks;
         }
 
         public void GetDrink(string drink)
@@ -79,7 +86,7 @@ namespace Drinks.SpyrosZoupas
                     }
                 }
 
-                TableVisualisationEngine.ShowTable(prepList, "Drink");
+                TableVisualisationEngine.ShowTable(prepList, drink);
             }
         }
     }
