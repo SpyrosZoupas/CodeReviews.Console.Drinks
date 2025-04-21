@@ -7,7 +7,7 @@
             if (string.IsNullOrEmpty(stringInput))
                 return false;
 
-            return stringInput.All(c => char.IsLetter(c) && c != '/' && c != ' ');
+            return stringInput.All(c => char.IsLetter(c) || c == '/' || c == ' ');
         }
 
         internal static bool IsIdValid(string stringInput)
