@@ -71,10 +71,10 @@ namespace Drinks.SpyrosZoupas
 
                 foreach (PropertyInfo prop in drinkDetail.GetType().GetProperties())
                 {
-                    if (prop.Name.Contains("str"))
-                    {
+                    if (prop.Name.Contains("Str"))
                         formattedName = prop.Name.Substring(3);
-                    }
+                    else
+                        formattedName = prop.Name;
 
                     if (!string.IsNullOrEmpty(prop.GetValue(drinkDetail)?.ToString()))
                     {
