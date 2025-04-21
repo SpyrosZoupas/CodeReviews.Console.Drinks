@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Drinks.SpyrosZoupas.Model
+namespace Drinks.SpyrosZoupas.Model;
+
+public class DrinkDetailObject
 {
-    public class DrinkDetailObject
-    {
-        [JsonProperty("drinks")]
-        public List<DrinkDetail> DrinkDetailList { get; set; }
-    }
+    [JsonProperty("drinks")]
+    public List<DrinkDetail> DrinkDetailList { get; set; }
 }

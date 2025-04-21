@@ -1,8 +1,7 @@
-﻿namespace Drinks.SpyrosZoupas.Model
+﻿namespace Drinks.SpyrosZoupas.Model;
+
+public class Drink
 {
-    public class Drink
-    {
-        public string IdDrink { get; set; }
-        public string StrDrink { get; set; }
-    }
+    public string IdDrink { get; set; }
+    public string StrDrink { get; set; }
 }
