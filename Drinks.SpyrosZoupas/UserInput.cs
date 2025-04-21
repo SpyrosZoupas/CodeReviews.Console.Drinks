@@ -19,7 +19,7 @@ namespace Drinks.SpyrosZoupas
                 new SelectionPrompt<string>()
                     .Title("[green]Choose category:[/]")
                     .PageSize(20)
-                    .AddChoices(categories.Select(c => c.strCategory))
+                    .AddChoices(categories.Select(c => c.StrCategory))
                 );
 
             while (!Validator.IsStringValid(category))
@@ -28,7 +28,7 @@ namespace Drinks.SpyrosZoupas
                 category = Console.ReadLine();
             }
 
-            if (!categories.Any(x => x.strCategory == category))
+            if (!categories.Any(x => x.StrCategory == category))
             {
                 Console.WriteLine("Category doesn't exist.");
                 GetCategoriesInput();
@@ -46,7 +46,7 @@ namespace Drinks.SpyrosZoupas
                     .Title("[hotpink]Choose drink or go back to category menu by pressing 0:[/]")
                     .PageSize(20)
                     .AddChoices("0")
-                    .AddChoices(drinks.Select(d => d.idDrink))
+                    .AddChoices(drinks.Select(d => d.IdDrink))
                 );
 
             if (drink == "0")
@@ -58,7 +58,7 @@ namespace Drinks.SpyrosZoupas
                 drink = Console.ReadLine();
             }
 
-            if (!drinks.Any(x => x.idDrink == drink))
+            if (!drinks.Any(x => x.IdDrink == drink))
             {
                 Console.WriteLine("Drink doesn't exist.");
                 GetDrinksInput(category);
