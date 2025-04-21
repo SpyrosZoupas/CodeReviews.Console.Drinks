@@ -5,11 +5,10 @@ namespace Drinks.SpyrosZoupas
 {
     public class TableVisualisationEngine
     {
-        public static void ShowTable<T>(List<T> tableData, [AllowNull] string tableName) where T :
-        class
+        public static void ShowTable<T>(List<T> tableData, [AllowNull] string tableName) 
+        where T : class
         {
-            if (tableName == null)
-                tableName = string.Empty;
+            tableName ??= string.Empty;
 
             Console.WriteLine("\n\n");
             ConsoleTableBuilder

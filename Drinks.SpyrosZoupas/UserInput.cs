@@ -1,4 +1,6 @@
-﻿namespace Drinks.SpyrosZoupas
+﻿using Spectre.Console;
+
+namespace Drinks.SpyrosZoupas
 {
     public class UserInput
     {
@@ -13,9 +15,12 @@
         {
             var categories = _drinksService.GetCategories();
 
-            Console.WriteLine("Choose category:");
-
-            string category = Console.ReadLine();
+            string category = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("[green]Choose category:[/]")
+                    .PageSize(20)
+                    .AddChoices(categories.Select(c => c.strCategory))
+                );
 
             while (!Validator.IsStringValid(category))
             {
@@ -36,9 +41,13 @@
         {
             var drinks = _drinksService.GetDrinksByCategory(category);
 
-            Console.WriteLine("Choose a drink or go back to category menu by pressing 0:");
-
-            string drink = Console.ReadLine();
+            string drink = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("[hotpink]Choose drink or go back to category menu by pressing 0:[/]")
+                    .PageSize(20)
+                    .AddChoices("0")
+                    .AddChoices(drinks.Select(d => d.idDrink))
+                );
 
             if (drink == "0")
                 GetCategoriesInput();
